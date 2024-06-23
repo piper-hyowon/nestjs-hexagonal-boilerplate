@@ -1,7 +1,5 @@
-export class UserGrade {
-  constructor(readonly value: 1 | 2 | 3) {}
-
-  equals(grade: UserGrade) {
-    return this.value === grade.value;
-  }
+export enum UserGrade {
+  First,
+  Second,
+  Third,
 }
