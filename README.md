@@ -1,76 +1,93 @@
-docker-compose up -d
+#### Controller ➡️ Service ➡️ Repository  
+
+UserService(상위모듈) 가 RepositoryService(하위모듈)에 의존하기 때문에
+구현 방법 변화에 (ORM..)  상위모듈 수정 필요. 
+(DIP 원칙 ⚠️ ☠️ )
+
+#### 💡 Service ➡️ IRepository ⬅️  Repository  
+" 하위모듈을 추상화 시키고, 추상화 시킨 객체를 의존하도록 변경 " 
+
+서비스에서 필요한 Repository 를 추상 클래스로 정의 ***(IRepository)***
+을 구현 -> ***Repository***
+=> Service, Repository 둘다 추상 클래스에만 의존! 
+
+" 하위모듈을 추상화 시키고, 추상화 시킨 객체를 의존하도록 변경 "  
+
+ >효과: 상위모듈이 추상화된 하위모듈을 의존하면, 그 구현부에 상관없이 더욱 변화에 안전한 프로그램을 설계할 수 있음.
 
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<img width="408" alt="image" src="https://github.com/piper-hyowon/nestjs-hexagonal-boilerplate/assets/158791917/c99b94fc-3aef-4413-b06a-f8c44e67883d">
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+#
+#
+#
+#
+#
+### Hexagonal Architecture
+##### ==  Ports and Adapters Architecture
+1. Domain
+2. Port
+3. Adapter
 
-## Description
+### port
+= contracts
+### adapter
+ **bridge**  between the core application and the external concerns(APIs, DBs, UI..). 
+#
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+#
+├── ***domain***
+│   ├── 도메인 모델
+│   └── Enums...
 
-## Installation
+├── ***port***
+│   ├── IRepository
+│   └── Service
 
-```bash
-$ npm install
-```
+├── ***adapter***
+│   └── persistence (IRepository 를 구현)
+│         └──── orm
+ │   └── presenter
+│         └──── http (controller)
+
+
+
+
+![image](https://github.com/piper-hyowon/nestjs-hexagonal-boilerplate/assets/158791917/075e4aea-6a62-425f-8eb4-f89fd1c33fe3)
+
+![image](https://github.com/piper-hyowon/nestjs-hexagonal-boilerplate/assets/158791917/07a5c952-96da-4570-9686-e09e5c6a1446)
+
+(이미지 출처: https://www.linkedin.com/pulse/layered-architecture-vs-hexagonal-ahmed-al-sharu-jy3ef)
+
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ docker-compose up -d
+$ npm run start:local
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+## API Docuentation
+- Swagger (http://localhost:8000/documentation)
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
+#### 헥사고날 아키텍처를 채택한 기업들>
+- 애드옌(Adyen)
+- 알리바바(Alibaba)
+- 넷플릭스(Netflix):
+- 페이팔(PayPal)
+- 라인
+- 우아한형제들
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### Links
+잘 설명: 
+https://kisztof.medium.com/hexagonal-architecture-with-nest-js-and-typescript-f181cc7b6452
+https://labyu.me/%ED%97%A5%EC%82%AC%EA%B3%A0%EB%82%A0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-266e65342154
+https://engineering.linecorp.com/ko/blog/port-and-adapter-architecture?source=post_page-----266e65342154--------------------------------
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
-
-Nest is [MIT licensed](LICENSE).
