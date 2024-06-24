@@ -15,4 +15,4 @@ import { UserRepository } from 'src/module/user/port/user.repository';
   ],
   exports: [UserRepository],
 })
-export class OrmAlarmPersistenceModule {}
+export class OrmUserPersistenceModule {}

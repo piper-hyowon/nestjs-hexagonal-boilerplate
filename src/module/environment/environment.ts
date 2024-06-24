@@ -1,5 +1,3 @@
-// import path from 'path';
-
 import path from 'path';
 
 export enum SupportedEnvironment {
@@ -8,6 +6,7 @@ export enum SupportedEnvironment {
   production = 'prod',
 }
 
+// TODO: .env File Validation
 export interface Configuration {
   // STAGE Environment
   readonly ENV: SupportedEnvironment;
@@ -28,8 +27,10 @@ export interface Configuration {
 
   // JWT
   readonly JWT_SECRET: string;
-  readonly JWT_ACCESS_EXPIRES_IN: string;
-  readonly JWT_REFRESH_EXPIRES_IN: string;
+  readonly JWT_TOKEN_AUDIENCE: string;
+  readonly JWT_TOKEN_ISSUER: string;
+  readonly JWT_ACCESS_TOKEN_TTL: string;
+  readonly JWT_REFRESH_TOKEN_TTL: string;
 
   // In-momory DB
   readonly REDIS_PATH: string;
