@@ -31,24 +31,48 @@ UserService(상위모듈) 가 RepositoryService(하위모듈)에 의존하기 �
 3. Adapter
 
 ### port
-= contracts
+= contracts (usecase)
 ### adapter
  **bridge**  between the core application and the external concerns(APIs, DBs, UI..). 
 #
 
+- 주된 아이디어: 비즈니스 코드를 기술 코드로부터 분리
+- + 기술측면이 비즈니스 측면에 의존하는지 확인
+1. 비즈니스 측면이 비즈니스 목표를 달성하는데 사용하는 기술에 대한 우려 없이도 발전할 수 있도록 해야한다.
+2. 비즈니스 코드에 피해를 주지 않고도 기술 코드를 변경할 수 있어야 한다.
+
 #
 ├── ***domain***
+
+
 │   ├── 도메인 모델
+
+
 │   └── Enums...
 
+
 ├── ***port***
+
+
 │   ├── IRepository
+
+
 │   └── Service
 
+
+
 ├── ***adapter***
+
+
 │   └── persistence (IRepository 를 구현)
+
+
 │         └──── orm
+
+
  │   └── presenter
+
+
 │         └──── http (controller)
 
 
@@ -89,5 +113,8 @@ https://kisztof.medium.com/hexagonal-architecture-with-nest-js-and-typescript-f1
 https://labyu.me/%ED%97%A5%EC%82%AC%EA%B3%A0%EB%82%A0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90-266e65342154
 https://engineering.linecorp.com/ko/blog/port-and-adapter-architecture?source=post_page-----266e65342154--------------------------------
 
+https://justwrite99.medium.com/%ED%81%B4%EB%A6%B0-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%ED%8C%8C%ED%8A%B81-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-vs-%EB%8F%84%EB%A9%94%EC%9D%B8-236c7008ac83
 
+--
 
+https://awesome-nestjs.com/resources/boilerplate.html
