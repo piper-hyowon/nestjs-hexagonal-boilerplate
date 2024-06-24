@@ -6,7 +6,7 @@ import { UserRepository } from 'src/module/user/port/user.repository';
 import { UserEntity } from '../entities/user.entity';
 import { User } from 'src/module/user/domain/user';
 import { UserMapper } from '../mappers/user.mapper';
-import { PostgresqlErrorCodes } from 'src/constants/postgresql-error-codes';
+import { PostgresqlErrorCodes } from 'src/common/constants/postgresql-error-codes';
 
 @Injectable()
 export class OrmUserRepository implements UserRepository {

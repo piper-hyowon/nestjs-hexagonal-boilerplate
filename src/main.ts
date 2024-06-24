@@ -15,6 +15,7 @@ import morganBody from 'morgan-body';
 import helmet from 'helmet';
 import { IncomingMessage, ServerResponse } from 'http';
 import { LogProvider } from './provider/log.provider';
+import { setupSwagger } from './docs/setup-swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(MainModule, {
@@ -28,7 +29,7 @@ async function bootstrap() {
   const isProduction = environmentService.isProduction();
 
   if (!isProduction) {
-    // setupSwagger(app);
+    setupSwagger(app);
   }
 
   app.setGlobalPrefix(environmentService.get<string>('API_VERSION'), {

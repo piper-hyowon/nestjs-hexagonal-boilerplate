@@ -3,11 +3,10 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { HashingService } from '../hashing/hashing.service';
 
 import { CreateUserCommand } from 'src/module/user/port/dto/user.command';
-import { User } from 'src/module/user/domain/user';
 import { FindUniqueUserQuery } from 'src/module/user/port/dto/user.query';
 import { JwtService } from '@nestjs/jwt';
 import { EnvironmentService } from 'src/module/environment/environment.service';
-import { SignUpDto } from '../dto/sign-up.dto';
+import { SignUpDto, SignUpResonse } from '../dto/sign-up.dto';
 import {
   JWT,
   SignInDto,
@@ -26,7 +25,7 @@ export class AuthenticationService {
     private readonly environmentService: EnvironmentService,
   ) {}
 
-  async signUp(signUpDto: SignUpDto): Promise<Omit<User, 'password'>> {
+  async signUp(signUpDto: SignUpDto): Promise<SignUpResonse> {
     const { email, password, grade } = signUpDto;
     const hashedPassword = await this.hashingService.hash(password);
 
@@ -64,6 +63,7 @@ export class AuthenticationService {
     return {
       ...jwts,
       user,
+      lastLoggedAt: new Date(),
     };
   }
 
