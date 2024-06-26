@@ -1,11 +1,12 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { AuthenticationService } from './authentication.service';
-import { AuthType } from '../enums/auth-type.enum';
-import { Auth } from '../decorators/auth.decorator';
-import { SignUpDto, SignUpResonse } from '../dto/sign-up.dto';
-import { JWT, SignInDto, SignInResponse } from '../dto/sign-in.dto';
-import { RefreshTokenDto } from '../dto/refresh-token.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+
+import { AuthenticationService } from './authentication.service';
+import { AuthType } from './enums/auth-type.enum';
+import { Auth } from './decorators/auth.decorator';
+import { SignUpDto, SignUpResonse } from './dto/sign-up.dto';
+import { JWT, SignInDto, SignInResponse } from './dto/sign-in.dto';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { ResponseData } from 'src/common/decorator/response-data.decorator';
 import { ResponsesDataDto } from 'src/common/dto/responses-data.dto';
 

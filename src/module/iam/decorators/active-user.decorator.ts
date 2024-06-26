@@ -1,13 +1,21 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { ActiveUserData } from '../interfaces/active-user-data.interface';
 import { REQUEST_USER_KEY } from '../constants/authentication';
+import { plainToInstance } from 'class-transformer';
+import { Expose } from 'class-transformer';
 
-// TODO: field undefined..?
-export const ActiveUser = createParamDecorator(
-  (field: keyof ActiveUserData | undefined, ctx: ExecutionContext) => {
-    const request = ctx.switchToHttp().getRequest();
-    const user: ActiveUserData | undefined = request[REQUEST_USER_KEY];
+export class ActiveUserData {
+  @Expose()
+  sub: string;
 
-    return field ? user?.[field] : user;
-  },
-);
+  @Expose()
+  email: string;
+}
+
+export const ActiveUser = createParamDecorator((_, ctx: ExecutionContext) => {
+  const request = ctx.switchToHttp().getRequest();
+  const user: ActiveUserData | undefined = request[REQUEST_USER_KEY];
+
+  return plainToInstance(ActiveUserData, user, {
+    excludeExtraneousValues: true,
+  });
+});

@@ -18,13 +18,13 @@ export class OrmUserRepository implements UserRepository {
   async findOneById(id: number): Promise<User> {
     const user = await this.userRepository.findOneBy({ id });
 
-    return UserMapper.toDomain(user);
+    return user ? UserMapper.toDomain(user) : null;
   }
 
-  async findUniqueUser(email: string): Promise<User> {
+  async findUniqueUser(email: string): Promise<User | null> {
     const user = await this.userRepository.findOneBy({ email });
 
-    return UserMapper.toDomain(user);
+    return user ? UserMapper.toDomain(user) : null;
   }
 
   async save(user: Partial<User>): Promise<User> {

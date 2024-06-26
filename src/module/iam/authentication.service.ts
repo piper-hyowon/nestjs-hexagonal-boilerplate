@@ -1,20 +1,20 @@
-import { UserService } from '../../user/port/user.service';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { HashingService } from '../hashing/hashing.service';
-
-import { CreateUserCommand } from 'src/module/user/port/dto/user.command';
-import { FindUniqueUserQuery } from 'src/module/user/port/dto/user.query';
 import { JwtService } from '@nestjs/jwt';
+
 import { EnvironmentService } from 'src/module/environment/environment.service';
-import { SignUpDto, SignUpResonse } from '../dto/sign-up.dto';
+import { HashingService } from '../util/hashing/hashing.service';
+import { SignUpDto, SignUpResonse } from './dto/sign-up.dto';
 import {
   JWT,
   SignInDto,
   SignInPayload,
   SignInResponse,
-} from '../dto/sign-in.dto';
-import { ActiveUserData } from '../interfaces/active-user-data.interface';
-import { RefreshTokenDto } from '../dto/refresh-token.dto';
+} from './dto/sign-in.dto';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { UserService } from 'src/module/user/application/port/user.service';
+import { CreateUserCommand } from 'src/module/user/application/dto/user.command';
+import { FindUniqueUserQuery } from 'src/module/user/application/dto/user.query';
+import { ActiveUserData } from './decorators/active-user.decorator';
 
 @Injectable()
 export class AuthenticationService {

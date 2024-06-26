@@ -28,13 +28,13 @@ async function bootstrap() {
   const port = environmentService.get<number>('PORT');
   const isProduction = environmentService.isProduction();
 
-  if (!isProduction) {
-    setupSwagger(app);
-  }
-
   app.setGlobalPrefix(environmentService.get<string>('API_VERSION'), {
     exclude: [{ path: '/version', method: RequestMethod.GET }],
   });
+
+  if (!isProduction) {
+    setupSwagger(app);
+  }
 
   app.enableVersioning({
     type: VersioningType.URI,
