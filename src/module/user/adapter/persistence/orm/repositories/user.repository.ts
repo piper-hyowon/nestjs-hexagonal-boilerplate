@@ -2,11 +2,11 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { UserRepository } from 'src/module/user/port/user.repository';
 import { UserEntity } from '../entities/user.entity';
 import { User } from 'src/module/user/domain/user';
 import { UserMapper } from '../mappers/user.mapper';
 import { PostgresqlErrorCodes } from 'src/common/constants/postgresql-error-codes';
+import { UserRepository } from 'src/module/user/application/port/user.repository';
 
 @Injectable()
 export class OrmUserRepository implements UserRepository {

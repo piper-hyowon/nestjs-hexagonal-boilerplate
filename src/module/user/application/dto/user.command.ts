@@ -1,4 +1,4 @@
-import { UserGrade } from '../../domain/value-objects/user-grade';
+import { UserGrade } from 'src/module/user/domain/value-objects/user-grade';
 
 export class CreateUserCommand {
   constructor(

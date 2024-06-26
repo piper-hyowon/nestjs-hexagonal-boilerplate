@@ -1,5 +1,5 @@
 // outbound port
-import { User } from '../domain/user';
+import { User } from '../../domain/user';
 
 export abstract class UserRepository {
   abstract findUniqueUser(email: string): Promise<User>;

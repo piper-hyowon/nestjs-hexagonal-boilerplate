@@ -1,10 +1,10 @@
 // inbound port
 
-import { User } from '../domain/user';
-import { FindUniqueUserQuery } from './dto/user.query';
-import { CreateUserCommand } from './dto/user.command';
+import { FindUniqueUserQuery } from '../dto/user.query';
+import { CreateUserCommand } from '../dto/user.command';
 import { UserRepository } from './user.repository';
 import { Inject, NotFoundException } from '@nestjs/common';
+import { User } from '../../domain/user';
 
 export class UserService {
   constructor(
