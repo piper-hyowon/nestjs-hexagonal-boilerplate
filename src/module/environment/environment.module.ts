@@ -1,7 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { getEnvFilePath } from './environment';
+import { getEnvFilePath, validate } from './environment';
 import { EnvironmentService } from './environment.service';
 
 @Global()
@@ -11,6 +11,7 @@ import { EnvironmentService } from './environment.service';
       envFilePath: [getEnvFilePath()],
       isGlobal: true,
       cache: true,
+      validate,
     }),
   ],
   providers: [EnvironmentService],

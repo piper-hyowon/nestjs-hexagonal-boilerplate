@@ -86,7 +86,6 @@ async function bootstrap() {
       whitelist: true,
       errorHttpStatusCode: HttpStatus.BAD_REQUEST,
       transform: true,
-      // dismissDefaultMessages: true,
       forbidNonWhitelisted: true,
       forbidUnknownValues: true,
       disableErrorMessages: false,
