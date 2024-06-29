@@ -26,15 +26,15 @@ export abstract class ApplicationException extends Error {
 }
 
 export class ContentNotFoundError extends ApplicationException {
-  constructor(domain: string, id: string | number) {
-    const message = `${domain} #${id} not found`;
+  constructor(resource: string, id: string | number) {
+    const message = `${resource} #${id} not found`;
     super(ErrorCode.ContentNotFound, message);
   }
 }
 
 export class DuplicateValueError extends ApplicationException {
-  constructor(domain: string, property: string, value: string | number) {
-    const message = `Duplicate ${property} for ${domain}: ${value}`;
+  constructor(resource: string, property: string, value: string | number) {
+    const message = `Duplicate ${property} for ${resource}: ${value}`;
     super(ErrorCode.DuplicateValue, message);
   }
 }

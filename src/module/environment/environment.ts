@@ -133,7 +133,7 @@ export function validate(
     for (const error of errors) {
       const { property, value, constraints } = error;
       LogProvider.info(
-        `[${property}: ${value}] ${constraints.toString()}`,
+        `[${property}: ${value}] ${JSON.stringify(constraints)}`,
         'Environment',
       );
     }
