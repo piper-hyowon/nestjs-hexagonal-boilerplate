@@ -1,11 +1,11 @@
 // inbound port
 
-import { FindUniqueUserQuery } from '../dto/user.query';
-import { CreateUserCommand } from '../dto/user.command';
-import { UserRepository } from './user.repository';
+import { FindUniqueUserQuery } from './dto/user.query';
+import { CreateUserCommand } from './dto/user.command';
+import { UserRepository } from './port/user.repository';
 import { Inject } from '@nestjs/common';
-import { User } from '../../domain/user';
-import { UserMapper } from '../../adapter/persistence/orm/mappers/user.mapper';
+import { User } from '../domain/user';
+import { UserMapper } from '../adapter/persistence/orm/mappers/user.mapper';
 
 export class UserService {
   constructor(

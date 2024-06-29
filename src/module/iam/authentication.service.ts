@@ -13,7 +13,6 @@ import {
   SignInResponse,
 } from './dto/sign-in.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
-import { UserService } from 'src/module/user/application/port/user.service';
 import { CreateUserCommand } from 'src/module/user/application/dto/user.command';
 import { FindUniqueUserQuery } from 'src/module/user/application/dto/user.query';
 import { RefreshTokenIdsStorage } from './refresh-token-ids.storage';
@@ -21,6 +20,7 @@ import {
   IncorrectLoginInfo,
   InvalidatedRefreshTokenError,
 } from 'src/common/types/error/application-exceptions';
+import { UserService } from '../user/application/user.service';
 
 @Injectable()
 export class AuthenticationService {
