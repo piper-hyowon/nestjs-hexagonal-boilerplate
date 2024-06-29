@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { OrmUserPersistenceModule } from './adapter/persistence/orm/orm-persistence.module';
+import { OrmUserPersistenceModule } from './adapter/persistence/orm/orm-user-persistence.module';
 import { UserService } from './application/user.service';
 import { UserController } from './adapter/presenter/http/user.controller';
 
