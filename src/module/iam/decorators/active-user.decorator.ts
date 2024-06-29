@@ -1,15 +1,7 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 import { REQUEST_USER_KEY } from '../constants/authentication';
 import { plainToInstance } from 'class-transformer';
-import { Expose } from 'class-transformer';
-
-export class ActiveUserData {
-  @Expose()
-  sub: string;
-
-  @Expose()
-  email: string;
-}
+import { ActiveUserData } from '../dto/sign-in.dto';
 
 export const ActiveUser = createParamDecorator((_, ctx: ExecutionContext) => {
   const request = ctx.switchToHttp().getRequest();

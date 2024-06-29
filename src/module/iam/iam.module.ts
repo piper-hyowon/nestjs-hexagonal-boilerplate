@@ -8,6 +8,7 @@ import { AuthenticationService } from './authentication.service';
 import { UserModule } from '../user/user.module';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AccessTokenGuard } from './guards/access-token.guard';
+import { RefreshTokenIdsStorage } from './refresh-token-ids.storage';
 
 @Module({
   imports: [JwtModule.registerAsync(jwtConfig.asProvider()), UserModule],
@@ -18,6 +19,7 @@ import { AccessTokenGuard } from './guards/access-token.guard';
       useClass: AuthenticationGuard,
     },
     AccessTokenGuard,
+    RefreshTokenIdsStorage,
   ],
   controllers: [AuthenticationController],
 })

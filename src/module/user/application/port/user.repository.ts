@@ -1,8 +1,9 @@
 // outbound port
-import { User } from '../../domain/user';
+import { UserEntity } from '../../adapter/persistence/orm/entities/user.entity';
 
 export abstract class UserRepository {
-  abstract findUniqueUser(email: string): Promise<User>;
-  abstract save(user: Partial<User>): Promise<User>;
-  abstract findOneById(id: number): Promise<User>;
+  abstract findUniqueUserByEmail(email: string): Promise<UserEntity>;
+  abstract saveUniqueUserOrFail(user: Partial<UserEntity>): Promise<UserEntity>;
+  abstract findOneById(id: number): Promise<UserEntity | null>;
+  abstract findOneByIdOrFail(id: number): Promise<UserEntity>;
 }

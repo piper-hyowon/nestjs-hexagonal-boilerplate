@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { AuthenticationService } from './authentication.service';
@@ -9,17 +9,17 @@ import { JWT, SignInDto, SignInResponse } from './dto/sign-in.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { ResponseData } from 'src/common/decorator/response-data.decorator';
 import { ResponsesDataDto } from 'src/common/dto/responses-data.dto';
+import { HttpController } from './decorators/http-controller.decorator';
 
 @ApiTags('authentication')
 @Auth(AuthType.None) // public route
-@Controller('authentication')
+@HttpController('authentication')
 export class AuthenticationController {
   constructor(private readonly authService: AuthenticationService) {}
 
   @ApiOperation({ summary: '회원 가입' })
   @Post('sign-up')
   @ResponseData(SignUpResonse)
-  @Auth(AuthType.None)
   async signUp(
     @Body() signUpDto: SignUpDto,
   ): Promise<ResponsesDataDto<SignUpResonse>> {

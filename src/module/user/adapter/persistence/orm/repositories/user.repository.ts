@@ -1,12 +1,15 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 import { UserEntity } from '../entities/user.entity';
 import { User } from 'src/module/user/domain/user';
-import { UserMapper } from '../mappers/user.mapper';
 import { PostgresqlErrorCodes } from 'src/common/constants/postgresql-error-codes';
 import { UserRepository } from 'src/module/user/application/port/user.repository';
+import {
+  ContentNotFoundError,
+  DuplicateValueError,
+} from 'src/common/types/error/application-exceptions';
 
 @Injectable()
 export class OrmUserRepository implements UserRepository {
@@ -15,27 +18,34 @@ export class OrmUserRepository implements UserRepository {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  async findOneById(id: number): Promise<User> {
+  async findOneById(id: number): Promise<UserEntity | null> {
     const user = await this.userRepository.findOneBy({ id });
 
-    return user ? UserMapper.toDomain(user) : null;
+    return user;
   }
 
-  async findUniqueUser(email: string): Promise<User | null> {
-    const user = await this.userRepository.findOneBy({ email });
+  async findOneByIdOrFail(id: number): Promise<UserEntity> {
+    const user = await this.userRepository.findOneBy({ id });
+    if (!user) {
+      throw new ContentNotFoundError('user', id);
+    }
 
-    return user ? UserMapper.toDomain(user) : null;
+    return user;
+  }
+  async findUniqueUserByEmail(email: string): Promise<UserEntity | null> {
+    return await this.userRepository.findOneBy({ email });
   }
 
-  async save(user: Partial<User>): Promise<User> {
+  async saveUniqueUserOrFail(user: Partial<User>): Promise<UserEntity> {
     try {
       const newEntity = await this.userRepository.save(user);
 
-      return UserMapper.toDomain(newEntity);
+      return newEntity;
     } catch (err) {
       if (err.code === PostgresqlErrorCodes.UniqueViolation) {
-        throw new ConflictException(); // TODO: HTTP ERROR 대신 커스텀 에러 필요
+        throw new DuplicateValueError('User', 'email', user.email);
       }
+
       throw err;
     }
   }
