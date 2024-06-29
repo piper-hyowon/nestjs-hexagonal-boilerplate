@@ -50,6 +50,11 @@ export class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   @Expose()
+  readonly DATABASE_URL: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Expose()
   readonly DB_HOST: string;
 
   @IsNotEmpty()

@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: local
       POSTGRES_PASSWORD: q1w2e3
-      POSTGRES_DB: postgres
+      POSTGRES_DB: test
 
   redis:
     image: redis

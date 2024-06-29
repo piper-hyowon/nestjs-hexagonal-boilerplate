@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { OrmConfigService } from './orm.service';
+// import { Module } from '@nestjs/common';
+// import { OrmConfigService } from './orm.service';
 
-@Module({
-  providers: [OrmConfigService],
-})
-export class OrmConfigModule {}
+// @Module({
+//   providers: [OrmConfigService],
+// })
+// export class OrmConfigModule {}

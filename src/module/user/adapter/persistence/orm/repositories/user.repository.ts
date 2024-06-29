@@ -1,52 +1,60 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { PrismaClient } from '@prisma/client';
 
 import { UserEntity } from '../entities/user.entity';
 import { User } from 'src/module/user/domain/user';
 import { PostgresqlErrorCodes } from 'src/common/constants/postgresql-error-codes';
 import { UserRepository } from 'src/module/user/application/port/user.repository';
-import {
-  ContentNotFoundError,
-  DuplicateValueError,
-} from 'src/common/types/error/application-exceptions';
+import { DuplicateValueError } from 'src/common/types/error/application-exceptions';
 
 @Injectable()
 export class OrmUserRepository implements UserRepository {
-  constructor(
-    @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserEntity>,
-  ) {}
+  constructor() // private prisma: PrismaClient
+  {}
 
-  async findOneById(id: number): Promise<UserEntity | null> {
-    const user = await this.userRepository.findOneBy({ id });
+  async findOneById(id: number): Promise<UserEntity> {
+    return;
 
-    return user;
+    // const user = await this.prisma.user.findFirst({ where: { id } });
+
+    // return user;
   }
 
   async findOneByIdOrFail(id: number): Promise<UserEntity> {
-    const user = await this.userRepository.findOneBy({ id });
-    if (!user) {
-      throw new ContentNotFoundError('user', id);
-    }
+    // const user = await this.prisma.user.findUnique({ id });
+    // if (!user) {
+    //   throw new ContentNotFoundError('user', id);
+    // }
+    // const user = this.prisma.user.findFirstOrThrow({ where: { id } });
 
-    return user;
+    // return user;
+
+    return;
   }
   async findUniqueUserByEmail(email: string): Promise<UserEntity | null> {
-    return await this.userRepository.findOneBy({ email });
+    return;
+
+    // return await this.prisma.user.findUnique({ where: email });
   }
 
   async saveUniqueUserOrFail(user: Partial<User>): Promise<UserEntity> {
-    try {
-      const newEntity = await this.userRepository.save(user);
+    return;
 
-      return newEntity;
-    } catch (err) {
-      if (err.code === PostgresqlErrorCodes.UniqueViolation) {
-        throw new DuplicateValueError('User', 'email', user.email);
-      }
+    // try {
+    //   const newEntity = await this.prisma.user.create({
+    //     data: {
+    //       ...user,
+    //     },
+    //   });
 
-      throw err;
-    }
+    //   return newEntity;
+    // } catch (err) {
+    //   console.log(err);
+    //   if (err.code === PostgresqlErrorCodes.UniqueViolation) {
+    //     throw new DuplicateValueError('User', 'email', user.email);
+    //   }
+
+    //   throw err;
+    // }
   }
 }
