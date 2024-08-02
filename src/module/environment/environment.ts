@@ -109,6 +109,11 @@ export class EnvironmentVariables {
   @IsString()
   @Expose()
   readonly REDIS_PATH: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Expose()
+  readonly NEIS_API_KEY: string;
 }
 
 export const getEnvFilePath = (): string =>
