@@ -1,5 +1,5 @@
 import { PaginatedList } from 'src/common/dto/response.dto';
-import { CurriculumVersion } from '../../domain/value-objects/curriculum-version';
+import { CurriculumVersion } from '../../domain/constants/curriculum-version';
 import { SubjectCategoryResponse } from '../../adapter/presenter/rest/dto/subject-categories.dto';
 
 export abstract class SubjectRepository {

@@ -13,7 +13,7 @@ import {
 import { UserTimetableEntity } from '../adapter/persistence/entities/user-timetable.entity';
 import { Weekday } from '../domain/value-objects/weekday';
 import { Period } from '../domain/value-objects/period';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 import { SchoolDatasetService } from 'src/module/school-dataset/application/school-dataset.service';
 
 @Injectable()

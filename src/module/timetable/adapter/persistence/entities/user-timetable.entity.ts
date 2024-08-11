@@ -10,7 +10,7 @@ import {
 
 import { UserEntity } from 'src/module/user/adapter/persistence/orm/entities/user.entity';
 import { SubjectEntity } from 'src/module/school-dataset/adapter/persistence/entities/subject.entity';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 import { Weekday } from 'src/module/timetable/domain/value-objects/weekday';
 import { Period } from 'src/module/timetable/domain/value-objects/period';
 

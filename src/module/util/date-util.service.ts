@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Semester } from '../school-dataset/domain/value-objects/semester';
+import { Semester } from '../school-dataset/domain/constants/semester';
 
 @Injectable()
 export class DateUtilService {

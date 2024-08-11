@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 import { SchoolEntity } from './school.entity';
-import { Grade } from 'src/module/school-dataset/domain/value-objects/grade';
+import { Grade } from 'src/module/school-dataset/domain/constants/grade';
 import { BaseEntity } from 'src/config/database/orm/base.entity';
 
 @Unique(['schoolId', 'grade', 'name'])

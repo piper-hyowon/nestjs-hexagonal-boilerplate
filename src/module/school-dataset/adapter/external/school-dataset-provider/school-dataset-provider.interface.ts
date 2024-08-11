@@ -1,7 +1,7 @@
 import { SchoolEntity } from '../../persistence/entities/school.entity';
 import { ClassEntity } from '../../persistence/entities/class.entity';
 import { UpsertDefaultTimetable } from 'src/module/timetable/adapter/persistence/types/default-timetable';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 
 export abstract class SchoolDatasetProvider {
   abstract fetchSchoolData(): Promise<Partial<SchoolEntity>[]>;

@@ -11,8 +11,8 @@ import {
   Length,
 } from 'class-validator';
 
-import { Grade } from 'src/module/school-dataset/domain/value-objects/grade';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Grade } from 'src/module/school-dataset/domain/constants/grade';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 import { Period } from 'src/module/timetable/domain/value-objects/period';
 import { Weekday } from 'src/module/timetable/domain/value-objects/weekday';
 

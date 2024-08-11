@@ -1,4 +1,4 @@
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 import { DefaultTimetableEntity } from '../../adapter/persistence/entities/default-timetable.entity';
 import { UpsertDefaultTimetable } from '../../adapter/persistence/types/default-timetable';
 

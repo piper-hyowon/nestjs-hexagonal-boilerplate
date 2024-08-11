@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
-import { CurriculumVersion } from 'src/module/school-dataset/domain/value-objects/curriculum-version';
+import { CurriculumVersion } from 'src/module/school-dataset/domain/constants/curriculum-version';
 import { BaseEntity } from 'src/config/database/orm/base.entity';
 
 @Unique(['curriculumVersion', 'name'])

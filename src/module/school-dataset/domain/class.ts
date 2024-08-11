@@ -1,5 +1,5 @@
 import { Expose } from 'class-transformer';
-import { Grade } from './value-objects/grade';
+import { Grade } from './constants/grade';
 
 // 학교별 학급
 export class Class {

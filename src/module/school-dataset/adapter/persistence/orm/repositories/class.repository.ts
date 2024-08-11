@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 
 import { ClassEntity } from '../../entities/class.entity';
 import { ClassRepository } from 'src/module/school-dataset/application/port/class.repository';
-import { Grade } from 'src/module/school-dataset/domain/value-objects/grade';
+import { Grade } from 'src/module/school-dataset/domain/constants/grade';
 import { ContentNotFoundError } from 'src/common/types/error/application-exceptions';
 
 export class OrmClassRepository implements ClassRepository {

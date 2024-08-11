@@ -14,9 +14,9 @@ import {
   SubjectCategoryResponse,
 } from '../adapter/presenter/rest/dto/subject-categories.dto';
 import { DefaultTimetableRepository } from 'src/module/timetable/application/repository/default-timetable.repository';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 import { SubjectsRequest } from '../adapter/presenter/rest/dto/subjects.dto';
-import { getCurriculumVersion } from '../domain/value-objects/curriculum-version';
+import { getCurriculumVersion } from '../domain/constants/curriculum-version';
 import { UpsertDefaultTimetable } from 'src/module/timetable/adapter/persistence/types/default-timetable';
 
 export class SchoolDatasetService {

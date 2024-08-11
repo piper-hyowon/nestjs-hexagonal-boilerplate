@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 
 import { DefaultTimetableEntity } from '../entities/default-timetable.entity';
 import { DefaultTimetableRepository } from 'src/module/timetable/application/repository/default-timetable.repository';
-import { Semester } from 'src/module/school-dataset/domain/value-objects/semester';
+import { Semester } from 'src/module/school-dataset/domain/constants/semester';
 
 export class OrmDefaultTimetableRepository
   implements DefaultTimetableRepository

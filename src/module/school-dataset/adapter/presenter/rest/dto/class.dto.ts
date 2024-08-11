@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Grade } from 'src/module/school-dataset/domain/value-objects/grade';
+import { Grade } from 'src/module/school-dataset/domain/constants/grade';
 
 export class ClassResponse {
   @ApiProperty({
