@@ -5,8 +5,8 @@ import {
 } from '@nestjs/common';
 import Redis from 'ioredis';
 
-import { EnvironmentService } from 'src/module/environment/environment.service';
 import { InMemoryRepository } from './in-memory.repository';
+import { EnvironmentService } from 'src/config/environment/environment.service';
 
 @Injectable()
 export class RedisRepository

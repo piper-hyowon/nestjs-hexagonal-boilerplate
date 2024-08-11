@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { randomUUID } from 'crypto';
 
-import { EnvironmentService } from 'src/module/environment/environment.service';
 import { HashingService } from '../util/hashing/hashing.service';
 import { SignUpDto, SignUpResonse } from './dto/sign-up.dto';
 import {
@@ -21,6 +20,7 @@ import {
   InvalidatedRefreshTokenError,
 } from 'src/common/types/error/application-exceptions';
 import { UserService } from '../user/application/user.service';
+import { EnvironmentService } from 'src/config/environment/environment.service';
 
 @Injectable()
 export class AuthenticationService {

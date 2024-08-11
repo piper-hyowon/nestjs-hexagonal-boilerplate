@@ -1,6 +1,5 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { MainModule } from './module/main.module';
-import { EnvironmentService } from './module/environment/environment.service';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import {
   BadRequestException,
@@ -16,6 +15,7 @@ import helmet from 'helmet';
 import { IncomingMessage, ServerResponse } from 'http';
 import { LogProvider } from './provider/log.provider';
 import { setupSwagger } from './docs/setup-swagger';
+import { EnvironmentService } from './config/environment/environment.service';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(MainModule, {

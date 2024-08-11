@@ -15,7 +15,6 @@ import { NeisError } from 'src/common/types/error/application-exceptions';
 import { validateSync } from 'class-validator';
 import { plainToInstance, ClassConstructor } from 'class-transformer';
 import { SchoolInfo, SchoolInfoRequest } from './dto/school-info.dto';
-import { EnvironmentService } from 'src/module/environment/environment.service';
 import { SchoolDatasetProvider } from './school-dataset-provider.interface';
 import { ClassEntity } from '../../persistence/entities/class.entity';
 import { SchoolEntity } from '../../persistence/entities/school.entity';
@@ -27,6 +26,7 @@ import { Semester } from 'src/module/school-dataset/domain/value-objects/semeste
 import { Weekday } from 'src/module/timetable/domain/value-objects/weekday';
 import { SubjectRepository } from 'src/module/school-dataset/application/port/subject.repository';
 import { LogProvider } from 'src/provider/log.provider';
+import { EnvironmentService } from 'src/config/environment/environment.service';
 
 @Injectable()
 export class NeisSchoolDatasetProviderService extends SchoolDatasetProvider {
