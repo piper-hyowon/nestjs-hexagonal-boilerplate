@@ -4,13 +4,13 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 import { ResponseData } from 'src/common/decorator/response-data.decorator';
 import { AuthorizationToken } from 'src/docs/constant/authorization-token';
 import { ActiveUser } from 'src/module/iam/decorators/active-user.decorator';
-import { HttpController } from 'src/module/iam/decorators/http-controller.decorator';
 import { ActiveUserData } from 'src/module/iam/dto/sign-in.dto';
 import { GetUserResponse } from './dto/user.dto';
 import { UserService } from 'src/module/user/application/user.service';
-import { ApiDescription } from 'src/common/decorator/api-description.decorator';
+import { ApiDescription } from 'src/docs/api-description.decorator';
+import { RestApi } from 'src/common/decorator/rest-api.decorator';
 
-@HttpController('user')
+@RestApi('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

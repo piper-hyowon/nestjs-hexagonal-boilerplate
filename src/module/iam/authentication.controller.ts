@@ -8,11 +8,11 @@ import { SignUpDto, SignUpResonse } from './dto/sign-up.dto';
 import { JWT, SignInDto, SignInResponse } from './dto/sign-in.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { ResponseData } from 'src/common/decorator/response-data.decorator';
-import { HttpController } from './decorators/http-controller.decorator';
+import { RestApi } from 'src/common/decorator/rest-api.decorator';
 
 @ApiTags('authentication')
 @Auth(AuthType.None) // public route
-@HttpController('authentication')
+@RestApi('authentication')
 export class AuthenticationController {
   constructor(private readonly authService: AuthenticationService) {}
 

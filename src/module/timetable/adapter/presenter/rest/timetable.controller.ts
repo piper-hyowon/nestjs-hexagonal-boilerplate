@@ -8,9 +8,8 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { ApiDescription } from 'src/common/decorator/api-description.decorator';
+import { ApiDescription } from 'src/docs/api-description.decorator';
 import { Auth } from 'src/module/iam/decorators/auth.decorator';
-import { HttpController } from 'src/module/iam/decorators/http-controller.decorator';
 import { AuthType } from 'src/module/iam/enums/auth-type.enum';
 import { TimetableMapper } from 'src/module/timetable/application/mappers/timetable.mapper';
 import { TimetableService } from 'src/module/timetable/application/timetable.service';
@@ -24,8 +23,9 @@ import {
 import { ResponseListDto } from 'src/common/dto/responses-list.dto';
 import { ApiExcludeEndpoint } from '@nestjs/swagger';
 import { DateUtilService } from 'src/module/util/date-util.service';
+import { RestApi } from 'src/common/decorator/rest-api.decorator';
 
-@HttpController('timetable')
+@RestApi('timetable')
 export class TimetableController {
   constructor(
     private readonly timetableService: TimetableService,

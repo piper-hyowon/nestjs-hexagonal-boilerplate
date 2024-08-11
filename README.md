@@ -107,5 +107,5 @@
 npm install
 
 # 개발 서버 실행
-npm run start
+npm run start:local
 ```
