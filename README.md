@@ -60,7 +60,7 @@
 ```plaintext
 📁 user
 ├── 📁 application
-│   ├── 📁 repositories
+│   ├── 📁 ports
 │   │   └── 📄 user.repository.abstract.ts
 │   ├── 📄 user.module.ts
 │   └── 📄 user.service.ts
